@@ -2,6 +2,9 @@ from time import sleep
 import requests
 import RPi.GPIO as gpio
 from pathlib import Path
+import datetime as dt
+import csv
+import calendar
 
 pin = [7, 11, 13, 15]
 
@@ -20,6 +23,8 @@ path = Path.home().joinpath("config.txt")
 file = path.open()
 floorcode = file.read()
 floorcode = floorcode.strip()
+
+t = dt.datetime.now() # Save the current time to a variable ('t')
 
 while(True):
     statusChanged = False;
@@ -59,6 +64,19 @@ while(True):
 
     res = ''.join(str(e) for e in status)
 
+    
+    delta = dt.datetime.now()-t
+    if delta.seconds >= 10 or statusChanged: #Update a new row every minute, or when status is changed
+        print('hi')
+        t = dt.datetime.now()  # Update 't' variable to new time
+    
+        timestampObj = calendar.timegm(time.gmtime()) #for timestamp formatting
+        timestamp = dt.datetime.fromtimestamp(timestampObj).isoformat()
+        
+        with open('logging.csv','a') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow([timestamp,status[0],status[1],status[2],status[3],statusChanged]) #append a new row containing timestamp and status of 4 machines, statusChanged    
+    
     if (statusChanged):
         print("change detected")
         print(res)
