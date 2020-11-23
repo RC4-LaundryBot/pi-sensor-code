@@ -50,17 +50,17 @@ while(True):
         if (offcount[i] >= 8 and status[i] != 0):
             status[i] = 0
             offcount[i] = 0
-            statusChanged = True;
+            statusChanged = True
         elif (oncount[i] >= 8 and status[i] != 1):
             oncount[i] = 0
             status[i] = 1
-            statusChanged = True;
+            statusChanged = True
         elif (offcount[i] > 1 and status[i] == 1):
            status[i] = 2
-           statusChanged = True;
+           statusChanged = True
         elif (oncount[i] > 1 and status[i] == 0):
             status[i] = 2
-            statusChanged = True;
+            statusChanged = True
 
     res = ''.join(str(e) for e in status)
 
