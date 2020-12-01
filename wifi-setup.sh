@@ -30,16 +30,16 @@ do
     getpass
 done
 
-https://eparon.me/2016/09/09/rpi3-enterprise-wifi.html
+# https://eparon.me/2016/09/09/rpi3-enterprise-wifi.html
 passhashraw=`echo -n '$userpass' | iconv -t utf16le | openssl md4`
 
-https://stackoverflow.com/questions/21906330/remove-stdin-label-in-bash
+# https://stackoverflow.com/questions/21906330/remove-stdin-label-in-bash
 passhash=${passhashraw#*= }
 
 echo pass is $userpass
 echo passhash is $passhash
 
-https://eparon.me/2016/09/09/rpi3-enterprise-wifi.html
+# https://eparon.me/2016/09/09/rpi3-enterprise-wifi.html
 wpasuppconftext="ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 country=$countrycode
