@@ -3,7 +3,7 @@ SERVER_IP=`cat server.txt`
 
 content="#!/bin/bash
 myIP=`hostname -I | tr -d \" \"`
-echo $myIP | ssh orca@${SERVER_IP} \"cat - > ip${PI_NUMBER}.txt\""
+echo \$myIP | ssh orca@${SERVER_IP} \"cat - > ip${PI_NUMBER}.txt\""
 
 touch /home/pi/setIP.sh
 echo "$content" > /home/pi/setIP.sh
