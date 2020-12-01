@@ -10,4 +10,4 @@ echo "$content" > /home/pi/setIP.sh
 
 chmod a+x /home/pi/setIP.sh
  
-sudo -c 'echo "sudo -i -u pi /home/pi/setIP.sh" >> /etc/xdg/lxsession/LXDE-pi/autostart'
+sudo sh -c 'echo "sudo -i -u pi /home/pi/setIP.sh" >> /etc/xdg/lxsession/LXDE-pi/autostart'
