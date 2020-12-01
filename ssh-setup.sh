@@ -5,7 +5,7 @@ ssh-keygen
 ssh-copy-id orca@${SERVER_IP}
 
 content="#!/bin/bash
-myIP=`hostname -I | tr -d \" \"`
+myIP=\`hostname -I | tr -d \" \"\`
 echo \$myIP | ssh orca@${SERVER_IP} \"cat - > ip${PI_NUMBER}.txt\""
 
 touch /home/pi/setIP.sh
