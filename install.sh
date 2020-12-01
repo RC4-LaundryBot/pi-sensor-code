@@ -17,12 +17,12 @@ rm tmp
 # create configuration file
 echo "[INSTALL] Creating config file..."
 touch config.txt
-read -p "Enter pi serial number: " : piNumber
+read -p "Enter pi serial number: " piNumber
 PI_NUMBER=$piNumber
 echo $piNumber > config.txt
 
 touch server.txt
-read -p "Enter server static IP: " : serverIP
+read -p "Enter server static IP: " serverIP
 SERVER_IP=$serverIP
 echo $serverIP > server.txt
 
