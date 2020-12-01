@@ -45,11 +45,16 @@ update_config=1
 country=$countrycode
 
 network={
-    ssid=\"NUS_STU\"
+    ssid=\"NUS_STU_2-4GHz\"
+    priority=1
+    proto=RSN
     key_mgmt=WPA-EAP
+    pairwise=CCMP
+    auth_alg=OPEN
     eap=PEAP
     identity=$userid
     password=hash:$passhash
+    phase1=\"peaplabel=0\"
     phase2=\"auth=MSCHAPV2\"
     }"
 
