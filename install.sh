@@ -48,6 +48,8 @@ sudo cp wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
 # set up ssh
 echo "[INSTALL] Starting ssh-setup.sh..."
 sudo bash ssh-setup.sh
+sudo systemctl enable ssh
+sudo systemctl start ssh
 
 # restart
 echo "[INSTALL] Reboot..."
