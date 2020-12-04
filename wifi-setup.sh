@@ -31,12 +31,12 @@ do
 done
 
 # https://eparon.me/2016/09/09/rpi3-enterprise-wifi.html
-passhashraw=`echo -n '$userpass' | iconv -t utf16le | openssl md4`
+passhashraw=`echo -n "${userpass}" | iconv -t utf16le | openssl md4`
 
 # https://stackoverflow.com/questions/21906330/remove-stdin-label-in-bash
 passhash=${passhashraw#*= }
 
-echo pass is $userpass
+echo pass is "${userpass}"
 echo passhash is $passhash
 
 # https://eparon.me/2016/09/09/rpi3-enterprise-wifi.html
