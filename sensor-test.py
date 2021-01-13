@@ -65,6 +65,7 @@ while(True):
 
     res = ''.join(str(e) for e in status)
 
+    print(res)
     
     delta = dt.datetime.now() - t
     if delta.seconds >= 5 * 60 or statusChanged: # update a new row every 5 minutes, or when status is changed
