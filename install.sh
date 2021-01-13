@@ -17,7 +17,14 @@ rm tmp
 # create configuration file
 echo "[INSTALL] Creating config file..."
 touch config.txt
-echo $1 > config.txt
+read -p "Enter pi serial number: " piNumber
+PI_NUMBER=$piNumber
+echo $piNumber > config.txt
+
+touch server.txt
+read -p "Enter server static IP: " serverIP
+SERVER_IP=$serverIP
+echo $serverIP > server.txt
 
 # install sensor script as service
 echo "[INSTALL] Configuring daemon..."
@@ -37,6 +44,12 @@ sudo cp interfaces /etc/network/interfaces
 echo "[INSTALL] Starting wifi-setup.sh..."
 sudo bash wifi-setup.sh
 sudo cp wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
+
+# set up ssh
+echo "[INSTALL] Starting ssh-setup.sh..."
+sudo bash ssh-setup.sh
+sudo systemctl enable ssh
+sudo systemctl start ssh
 
 # restart
 echo "[INSTALL] Reboot..."

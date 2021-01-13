@@ -31,12 +31,12 @@ do
 done
 
 # https://eparon.me/2016/09/09/rpi3-enterprise-wifi.html
-passhashraw=`echo -n '$userpass' | iconv -t utf16le | openssl md4`
+passhashraw=`echo -n "${userpass}" | iconv -t utf16le | openssl md4`
 
 # https://stackoverflow.com/questions/21906330/remove-stdin-label-in-bash
 passhash=${passhashraw#*= }
 
-echo pass is $userpass
+echo pass is "${userpass}"
 echo passhash is $passhash
 
 # https://eparon.me/2016/09/09/rpi3-enterprise-wifi.html
@@ -45,16 +45,12 @@ update_config=1
 country=$countrycode
 
 network={
-    ssid=\"NUS_STU\"
     priority=1
-    proto=RSN
+    ssid=\"NUS_STU_2-4GHz\"
     key_mgmt=WPA-EAP
-    pairwise=CCMP
-    auth_alg=OPEN
     eap=PEAP
     identity=$userid
     password=hash:$passhash
-    phase1=\"peaplabel=0\"
     phase2=\"auth=MSCHAPV2\"
     }"
 
